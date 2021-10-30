@@ -21,7 +21,7 @@ def receive(request):
     message = "From: %s To: %s Message: %s" % (phone_from, phone_to, body)
 
     if not body:
-        raise Http404("Poll does not exist")
+        raise Http404("No message was sent.")
 
     new_message = Message(message_to=phone_to, message_from=phone_from, message_body=body)
     new_message.save()

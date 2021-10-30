@@ -23,5 +23,6 @@ Read your SMS messages using Django admin interface.
   * Set DEBUG to true if you are not in production and/or wish to troubleshoot
 
 ## Reading your messages
-* Keep the project running and set it as Twilio's SMS webhook for your phone number
+* Keep the project running and set it as Twilio's SMS webhook for your phone number, adding /sms/
+  Webhook: http://example.com/sms/
 * Go to http://example.com/admin and browse the model "Message"
