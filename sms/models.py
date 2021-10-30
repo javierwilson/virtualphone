@@ -5,11 +5,11 @@ from django.template.defaultfilters import date
 
 
 class Message(models.Model):
-    id = models.AutoField(primary_key=True)
-    message_from = models.CharField(max_length=200)
-    message_to = models.CharField(max_length=200)
-    message_body = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    id = models.AutoField("Id", primary_key=True)
+    message_from = models.CharField("From", max_length=200)
+    message_to = models.CharField("To", max_length=200)
+    message_body = models.TextField("Text of message")
+    created_at = models.DateTimeField("When", auto_now_add=True)
 
     class Meta:
         ordering = ['-created_at']
