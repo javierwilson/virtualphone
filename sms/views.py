@@ -10,6 +10,10 @@ from django.core.mail import send_mail
 
 from .models import Message
 
+def homepage(request):
+    context = {'data': 'For future use'}
+    return render(request, 'index.html', context)
+
 @csrf_exempt
 def receive(request):
     email_to = settings.EMAIL_TO
