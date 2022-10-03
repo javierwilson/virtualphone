@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from sms.views import receive, homepage
+from sms.views import receive, homepage, info
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sms/', receive),
+    path('info', info),
     path('', homepage),
 ]

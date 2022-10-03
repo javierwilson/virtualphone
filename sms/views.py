@@ -8,15 +8,24 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.core.mail import send_mail
 
-from .models import Message
+from .models import Message, SiteConfiguration
 
 def homepage(request):
     context = {'data': 'For future use'}
     return render(request, 'index.html', context)
 
+def info(request):
+    config = SiteConfiguration.objects.get()
+    email_to = config.email_to
+    if not email_to:
+        email_to = settings.EMAIL_TO
+    context = {'email_to': email_to}
+    return render(request, 'info.html', context)
+
 @csrf_exempt
 def receive(request):
-    email_to = settings.EMAIL_TO
+    config = SiteConfiguration.objects.get()
+    email_to = config.get(email_to, settings.EMAIL_TO)
     email_from = settings.EMAIL_FROM
     phone_from = request.POST.get('From')
     subject = "SMS from %s" % (phone_from,)
